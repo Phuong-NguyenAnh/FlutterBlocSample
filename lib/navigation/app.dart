@@ -35,6 +35,21 @@ class App extends StatelessWidget {
 }
 
 class PageA extends StatelessWidget {
+  buildPopButton(context) {
+    if (Navigator.of(context).canPop()) {
+      return RaisedButton(
+        child: Text('Pop'),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      );
+    }
+    return Container(
+      width: 0,
+      height: 0,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<MyBloc, ROUTE_STATE>(
@@ -48,11 +63,18 @@ class PageA extends StatelessWidget {
           title: Text('Page A'),
         ),
         body: Center(
-          child: RaisedButton(
-            child: Text('Go to PageB'),
-            onPressed: () {
-              BlocProvider.of<MyBloc>(context).add(MyEvent.eventB);
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              buildPopButton(context),
+              RaisedButton(
+                child: Text('Go to PageB'),
+                onPressed: () {
+                  BlocProvider.of<MyBloc>(context).add(MyEvent.eventB);
+                },
+              ),
+            ],
           ),
         ),
       ),
