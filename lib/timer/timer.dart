@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../blocs/timer/bloc.dart';
+import 'bloc/bloc.dart';
 import 'actions.dart' as TimerActions;
 import 'background.dart';
 
