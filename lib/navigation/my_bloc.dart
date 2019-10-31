@@ -1,21 +1,21 @@
 import 'package:bloc/bloc.dart';
 import 'bloc.dart';
 
-class MyBloc extends Bloc<MyEvent, MyState> {
+class MyBloc extends Bloc<MyEvent, ROUTE_STATE> {
   @override
-  MyState get initialState => StateA();
+  ROUTE_STATE get initialState => ROUTE_STATE.StateA;
 
   @override
-  Stream<MyState> mapEventToState(MyEvent event) async* {
+  Stream<ROUTE_STATE> mapEventToState(MyEvent event) async* {
     switch (event) {
       case MyEvent.eventA:
-        yield StateA();
+        yield ROUTE_STATE.StateA;
         break;
       case MyEvent.eventB:
-        yield StateB();
+        yield ROUTE_STATE.StateB;
         break;
       case MyEvent.eventC:
-        yield StateC();
+        yield ROUTE_STATE.StateC;
         break;
     }
   }

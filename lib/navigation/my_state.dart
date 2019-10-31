@@ -1,7 +1,1 @@
-abstract class MyState {}
-
-class StateA extends MyState {}
-
-class StateB extends MyState {}
-
-class StateC extends MyState {}
+enum ROUTE_STATE { StateA, StateB, StateC }
