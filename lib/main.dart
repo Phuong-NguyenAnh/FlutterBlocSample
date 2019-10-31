@@ -1,43 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-// import 'timer/bloc/bloc.dart';
-// import 'timer/bloc/ticker.dart';
-// import 'timer/timer.dart';
+// import 'counter/app.dart' as Counter;
 
-import 'counter/counter_bloc.dart';
-import 'counter/counter_page.dart';
+// import 'timer/app.dart' as Timer;
 
-void main() => runApp(MyApp());
+import 'package:bloc/bloc.dart';
+import 'infinite_list/bloc/delegate.dart';
+import 'infinite_list/app.dart' as InfiniteList;
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: BlocProvider<CounterBloc>(
-        builder: (context) => CounterBloc(),
-        child: CounterPage(),
-      ),
-    );
-  }
+void main() {
+  BlocSupervisor.delegate = SimpleBlocDelegate();
+  runApp(InfiniteList.App());
 }
-
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       theme: ThemeData(
-//         primaryColor: Color.fromRGBO(109, 234, 255, 1),
-//         accentColor: Color.fromRGBO(72, 74, 126, 1),
-//         brightness: Brightness.dark,
-//       ),
-//       title: 'Flutter Timer',
-//       home: BlocProvider(
-//         builder: (context) => TimerBloc(ticker: Ticker()),
-//         child: Timer(),
-//       ),
-//     );
-//   }
-// }
