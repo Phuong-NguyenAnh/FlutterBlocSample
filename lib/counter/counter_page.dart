@@ -6,8 +6,6 @@ import 'counter_bloc.dart';
 class CounterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final CounterBloc counterBloc = BlocProvider.of<CounterBloc>(context);
-
     return Scaffold(
       appBar: AppBar(title: Text('Counter')),
       body: BlocBuilder<CounterBloc, int>(
@@ -29,7 +27,8 @@ class CounterPage extends StatelessWidget {
             child: FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () {
-                counterBloc.add(CounterEvent.increment);
+                BlocProvider.of<CounterBloc>(context)
+                    .add(CounterEvent.increment);
               },
             ),
           ),
@@ -38,7 +37,8 @@ class CounterPage extends StatelessWidget {
             child: FloatingActionButton(
               child: Icon(Icons.remove),
               onPressed: () {
-                counterBloc.add(CounterEvent.decrement);
+                BlocProvider.of<CounterBloc>(context)
+                    .add(CounterEvent.decrement);
               },
             ),
           ),
